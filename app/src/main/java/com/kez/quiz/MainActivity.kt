@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             KezQuizTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(text = "Соси бибу")
+                    Text(text = "у тя матуха сосала")
                 }
             }
         }
