@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "238513393751",
+    "firebase_url": "https://storkdatabase-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "storkdatabase",
+    "storage_bucket": "storkdatabase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238513393751:android:bc1c9db0494f960e3a5312",
+        "android_client_info": {
+          "package_name": "android.realproject.stork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238513393751-ck1432kt6lqastifha45fgvv368dpmhd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr3jUxznMlt2_L5b52p8e-jcN5hn1p1Lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238513393751-ck1432kt6lqastifha45fgvv368dpmhd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238513393751:android:cb6051291a61d3b63a5312",
+        "android_client_info": {
+          "package_name": "com.kez.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238513393751-ck1432kt6lqastifha45fgvv368dpmhd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr3jUxznMlt2_L5b52p8e-jcN5hn1p1Lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238513393751-ck1432kt6lqastifha45fgvv368dpmhd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
