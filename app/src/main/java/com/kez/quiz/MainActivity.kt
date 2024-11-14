@@ -27,13 +27,17 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
+            kezViewModel.value.getCards()
             KezQuizTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Text(text = "у тя матуха сосала")
+                    
                 }
             }
         }
     }
 }
+
+
 
 
