@@ -11,6 +11,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 
+
+/**
+ * Здесь я просто обьясню из гугла, что такое enum класс
+ *
+ * Enums или перечисления представляют тип данных, который позволяет определить набор логически
+ * связанных констант. Для определения перечисления применяются ключевые слова enum class.
+ *
+ * Проще говоря, они нужны для строгого перечесления.
+ *
+ * https://metanit.com/kotlin/tutorial/4.13.php
+ */
 enum class TextSize { SMALL, MEDIUM, LARGE, EXTRA_SMALL }
 enum class FWeight { TINY, REGULAR, BOLD }
 

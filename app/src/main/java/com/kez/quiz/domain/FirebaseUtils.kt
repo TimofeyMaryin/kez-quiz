@@ -8,6 +8,13 @@ import com.kez.quiz.data.FirebaseCallback
 import com.kez.quiz.data.KezModel
 import com.kez.quiz.data.QuizModel
 
+
+/**
+ * Ну тут на самом деле сложновато будет объяснить и я не вижу смысла это делать
+ * на таком уровне твой подготовке, поэтому просто скпни.
+ *
+ * Если вкратце, то мы просто работает с интерфейсами и API Firebase, никакой самодеятельности
+ */
 interface FirebaseUtils {
 
     fun getCards(callback: FirebaseCallback,)

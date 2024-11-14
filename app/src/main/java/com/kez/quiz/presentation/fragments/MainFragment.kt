@@ -8,20 +8,17 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -34,6 +31,22 @@ import com.kez.quiz.presentation.ui.CardItem
 import com.kez.quiz.presentation.ui.HorizontalCardItem
 import com.kez.quiz.presentation.vms.KezViewModel
 
+
+/**
+ * Это главнй экран, который будет всегда отображаться первым при запуске приложения.
+ *
+ * Что и как тут фурычит:
+ * Переменная configuration отвечает за состояния поворота экрана. Те, если экран перевернулся
+ * переменная это фиксирует и это можно считать, что мы и сделали.
+ *
+ * infiniteProgression и progress лишь отвечают за то, чтоб индикатор загрузки корректно работал.
+ *
+ * Конструкция when как раз нужна для того, чтоб правильно обработать состояние изменения экрана.
+ *
+ * HorizontalOrientationMainScreen и VerticalOrientationMainScreen - просто функции, которые создают
+ * интерфейс.
+ */
+
 @Composable
 fun MainFragment(
     navController: NavController,
@@ -41,7 +54,7 @@ fun MainFragment(
 ) {
     val configuration = LocalConfiguration.current
     val infiniteProgression = rememberInfiniteTransition()
-    val process by infiniteProgression.animateFloat(
+    val progress by infiniteProgression.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = InfiniteRepeatableSpec(
@@ -52,11 +65,11 @@ fun MainFragment(
 
     when (configuration.orientation) {
         Configuration.ORIENTATION_LANDSCAPE  -> {
-            HorizontalOrientationMainScreen(progress = process, viewModel = viewModel)
+            HorizontalOrientationMainScreen(progress = progress, viewModel = viewModel)
         }
         else -> {
             VerticalOrientationMainScreen(
-                progress = process,
+                progress = progress,
                 viewModel = viewModel,
                 navController = navController
             )

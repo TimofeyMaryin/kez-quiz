@@ -1,6 +1,5 @@
 package com.kez.quiz.presentation.vms
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -9,6 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.kez.quiz.data.FirebaseCallback
 import com.kez.quiz.data.KezModel
 import com.kez.quiz.domain.FirebaseUtilsImpl
+
+/**
+ * Ну это как раз класс ViewModel, представляющий связующий элемент архитектуры ViewModel.
+ * Лучше посмотреть видосик, как он работает, теоритический сложно будет это обьяснить )
+ */
 
 class KezViewModel(
     db: FirebaseFirestore

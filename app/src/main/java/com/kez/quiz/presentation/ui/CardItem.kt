@@ -28,6 +28,11 @@ import com.kez.quiz.ui.theme.black
 import com.kez.quiz.ui.theme.containerColor
 
 
+/**
+ * На самом деле, мне кажеться не стоит тебе обьяснять, как и что здесь работает
+ * ты можешь смело экспеременитровать и гуглить, как работают те или иные функции, думаю, тут проблем не возникнет
+ */
+
 @Composable
 fun CardItem(
     model: KezModel,
