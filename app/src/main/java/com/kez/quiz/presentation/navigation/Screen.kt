@@ -12,4 +12,6 @@ package com.kez.quiz.presentation.navigation
 sealed class Screen(val route: String) {
     data object MainScreen : Screen("main-screen")
     data object PreviewPollScreen : Screen("preview-poll-screen")
+    data object PollScreen : Screen("poll-screen")
+    data object FinishFragment : Screen("finish-screen")
 }

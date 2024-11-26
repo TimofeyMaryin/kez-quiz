@@ -1,5 +1,7 @@
 package com.kez.quiz.ui.theme
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -13,3 +15,8 @@ val Pink40 = Color(0xFF7D5260)
 
 val containerColor = Color.Gray
 val black = Color.Black
+val white = Color.White
+val gray = Color.Gray
+val green = Color.Green
+
+@Composable fun red() = MaterialTheme.colorScheme.error

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.kez.quiz.data.QuizModel
+import com.kez.quiz.presentation.navigation.Screen
 import com.kez.quiz.presentation.ui.AppText
 import com.kez.quiz.presentation.ui.FWeight
 import com.kez.quiz.presentation.ui.TextSize
@@ -111,7 +112,7 @@ fun PreviewPollFragment(
                 }
 
                 item {
-                    Button(onClick = {  }) {
+                    Button(onClick = { navController.navigate(Screen.PollScreen.route) }) {
                         AppText(
                             value = "Начать контроль",
                             textSize = TextSize.MEDIUM,

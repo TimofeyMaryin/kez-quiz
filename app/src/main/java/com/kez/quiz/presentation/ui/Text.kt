@@ -5,11 +5,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import com.kez.quiz.R
 
 
 /**
@@ -22,8 +25,18 @@ import androidx.compose.ui.text.style.TextOverflow
  *
  * https://metanit.com/kotlin/tutorial/4.13.php
  */
+
+private val fontFamily = FontFamily(
+    listOf(
+        Font(R.font.montserratalternates_black, weight = FontWeight.Bold,),
+        Font(R.font.montserratalternates_light, weight = FontWeight.Light),
+        Font(R.font.montserratalternates_medium, weight = FontWeight.Medium),
+        Font(R.font.montserratalternates_regular)
+    )
+)
+
 enum class TextSize { SMALL, MEDIUM, LARGE, EXTRA_SMALL }
-enum class FWeight { TINY, REGULAR, BOLD }
+enum class FWeight { TINY, REGULAR, BOLD, MEDIUM }
 
 
 @Composable
@@ -53,10 +66,12 @@ fun AppText(
             FWeight.TINY -> FontWeight.Light
             FWeight.REGULAR -> FontWeight.Normal
             FWeight.BOLD -> FontWeight.Bold
+            FWeight.MEDIUM -> FontWeight.Medium
         },
         maxLines = maxLines,
         overflow = TextOverflow.Ellipsis,
         textDecoration = textDecoration,
         fontStyle = fontStyle,
+        fontFamily = fontFamily
     )
 }

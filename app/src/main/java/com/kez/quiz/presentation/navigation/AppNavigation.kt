@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kez.quiz.presentation.fragments.FinishFragment
 import com.kez.quiz.presentation.fragments.MainFragment
+import com.kez.quiz.presentation.fragments.PollFragment
 import com.kez.quiz.presentation.fragments.PreviewPollFragment
 import com.kez.quiz.presentation.vms.KezViewModel
 
@@ -43,7 +45,6 @@ fun AppNavigation(viewModel: KezViewModel) {
         navController = navController,
         startDestination = Screen.MainScreen.route
     ) {
-
         this.composable(
             route = Screen.MainScreen.route
         ) {
@@ -56,6 +57,17 @@ fun AppNavigation(viewModel: KezViewModel) {
             PreviewPollFragment(navController = navController, viewModel = viewModel)
         }
 
+        this.composable(
+            route = Screen.PollScreen.route
+        ) {
+            PollFragment(viewModel = viewModel, navController = navController)
+        }
+
+        this.composable(
+            route = Screen.FinishFragment.route
+        ) {
+            FinishFragment(viewModel = viewModel, navController = navController)
+        }
     }
 }
 
