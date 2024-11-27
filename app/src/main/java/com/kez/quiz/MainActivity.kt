@@ -77,6 +77,7 @@ class MainActivity : ComponentActivity() {
             KezQuizTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     AppNavigation(kezViewModel.value)
+                    innerPadding
                 }
             }
         }

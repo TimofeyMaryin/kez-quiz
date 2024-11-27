@@ -45,6 +45,7 @@ import com.kez.quiz.presentation.ui.TextSize
 import com.kez.quiz.presentation.vms.KezViewModel
 import com.kez.quiz.ui.theme.gray
 import com.kez.quiz.ui.theme.black
+import com.kez.quiz.ui.theme.darkgray
 import com.kez.quiz.ui.theme.green
 import com.kez.quiz.ui.theme.red
 import com.kez.quiz.ui.theme.white
@@ -186,7 +187,7 @@ private fun PollButton(
     // вот это можешь изменять (цвета!!!)
     val containerColor by animateColorAsState(
         targetValue = when (status) {
-            QuizButtonState.NONE -> gray // вот тут
+            QuizButtonState.NONE -> darkgray // вот тут
             QuizButtonState.CORRECT -> green // тут
             QuizButtonState.INCORRECT -> red() // тут
         }
@@ -196,7 +197,7 @@ private fun PollButton(
     // Модифайры можешь изменять и баловаться!
     AnimatedVisibility(
         visible = isShow,
-        enter = slideInHorizontally(tween(500)) { it } + fadeIn(tween(500)),
+        enter = slideInHorizontally(tween(400)) { it } + fadeIn(tween(500)),
     ) {
         Box(
             modifier = Modifier.padding(vertical = 8.dp),

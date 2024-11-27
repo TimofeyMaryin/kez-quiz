@@ -22,6 +22,6 @@ fun FinishFragment(
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color.Red), contentAlignment = Alignment.Center) {
-        AppText(value = "AYP", textSize = TextSize.LARGE, fontWeight = FWeight.BOLD, color = white)
+        AppText(value = "POSOSAL", textSize = TextSize.LARGE, fontWeight = FWeight.BOLD, color = white)
     }
 }

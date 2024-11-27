@@ -92,7 +92,7 @@ private fun VerticalOrientationMainScreen(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.bg_bggenerator_com_qwerty),
+            painter = painterResource(id = R.drawable.bg_bggenerator_com),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop

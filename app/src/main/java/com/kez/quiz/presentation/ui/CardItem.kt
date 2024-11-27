@@ -45,7 +45,7 @@ fun CardItem(
                 .clip(RoundedCornerShape(35.dp))
                 .fillMaxWidth()
                 .height(150.dp)
-                .background(containerColor),
+                .background(Color.White),
             contentAlignment = Alignment.Center
         ) {
 
@@ -73,7 +73,7 @@ fun CardItem(
                     Button(
                         onClick = { onClick() },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Magenta
+                            containerColor = Color.Cyan
                         )
                     ) {
                         AppText(
