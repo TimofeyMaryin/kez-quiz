@@ -43,7 +43,6 @@ class FirebaseUtilsImpl(private val db: FirebaseFirestore): FirebaseUtils {
                                 val question = questionDocument.getString("question") ?: "error"
                                 val answers = questionDocument.get("answers") as? List<String> ?: emptyList()
                                 val currentIndex = (questionDocument.getLong("currentIndex") ?: 0L).toInt()
-
                                 val quiz = QuizModel(
                                     question = question,
                                     answers = answers,
@@ -51,6 +50,7 @@ class FirebaseUtilsImpl(private val db: FirebaseFirestore): FirebaseUtils {
                                 )
                                 quizList.add(quiz)
                             }
+
 
                             // После получения всех вопросов добавляем карточку
                             val card = KezModel(

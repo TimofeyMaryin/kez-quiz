@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.kez.quiz.data.FirebaseCallback
 import com.kez.quiz.data.KezModel
+import com.kez.quiz.data.QuizButtonState
 import com.kez.quiz.domain.FirebaseUtilsImpl
 
 /**
@@ -23,6 +24,7 @@ class KezViewModel(
 
     var cards = mutableListOf<KezModel>()
     var isDoneLoad by mutableStateOf(false)
+    var resultState by mutableStateOf(QuizButtonState.NONE)
 
 
     fun getCards() {

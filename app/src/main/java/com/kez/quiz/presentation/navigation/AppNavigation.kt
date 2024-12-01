@@ -68,6 +68,7 @@ fun AppNavigation(viewModel: KezViewModel) {
         ) {
             FinishFragment(viewModel = viewModel, navController = navController)
         }
+
     }
 }
 

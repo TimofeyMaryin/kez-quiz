@@ -59,7 +59,7 @@ fun PollFragment(
 ) {
 
     // НЕ ТРОГАТЬ!
-
+    var currentAnswerCounter by remember { mutableStateOf(0) }
     val context = LocalContext.current
     val pagerState = rememberPagerState { viewModel.currentModel.questions.size }
     val pollModelQuestionStatus = remember { mutableStateListOf<Boolean>() }
@@ -145,16 +145,23 @@ fun PollFragment(
                                     isShow = pollModelQuestionStatus.getOrElse(index) { false }
                                 ) {
                                     scope.launch {
-                                        localStatus = if (viewModel.currentModel.questions[pagerState.currentPage].currentIndex == index) {
-                                            QuizButtonState.CORRECT
-                                        } else {
-                                            QuizButtonState.INCORRECT
+                                        if (viewModel.currentModel.questions[pagerState.currentPage].currentIndex == index){
+                                            localStatus = QuizButtonState.CORRECT
+                                            currentAnswerCounter++
+                                        }else{
+                                            localStatus = QuizButtonState.INCORRECT
                                         }
 
                                         delay(1_000)
 
 
                                         if (pagerState.currentPage == viewModel.currentModel.questions.lastIndex) {
+                                            if (currentAnswerCounter > viewModel.currentModel.questions.size/2){
+                                                Log.e("TAG", "PollFragment - 1:${viewModel.currentModel.questions.size/2} ", )
+                                                Log.e("TAG", "PollFragment - 2:${currentAnswerCounter} ", )
+
+                                                viewModel.resultState = QuizButtonState.CORRECT
+                                            }
                                             navController.navigate(Screen.FinishFragment.route)
                                         }
                                         pagerState.animateScrollToPage(pagerState.currentPage + 1)
@@ -222,6 +229,7 @@ private fun PollButton(
             }
         }
     }
+
 
 
 }
