@@ -2,6 +2,7 @@ package com.kez.quiz.presentation.fragments
 
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -65,8 +66,8 @@ fun PollFragment(
     viewModel: KezViewModel,
     navController: NavController,
 ) {
+    var  currentAnswerCounter by remember { mutableStateOf(0) }
 
-    var currentAnswerCounter by remember { mutableStateOf(0) }
     val context = LocalContext.current
     val pagerState = rememberPagerState { viewModel.currentModel.questions.size }
     val pollModelQuestionStatus = remember { mutableStateListOf<Boolean>() }
@@ -236,10 +237,12 @@ private fun PollButton(
             ) {
                 // С текстом можешь покрасоваться
                 AppText(
+                    modifier = Modifier,
                     value = value,
-                    textSize = TextSize.SMALL,
+                    textSize = TextSize.MEDIUM,
                     fontWeight = FWeight.MEDIUM,
-                    color = black
+                    color = black,
+                    textAlign = TextAlign.Center
                 )
             }
         }

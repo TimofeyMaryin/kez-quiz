@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -101,42 +102,51 @@ fun PreviewPollFragment(
             }
         }
 
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .weight(9f),
-            contentAlignment = Alignment.Center
         ) {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(30.dp),
+                contentAlignment = Alignment.TopCenter
             ) {
-                item {
-                    Spacer(modifier = Modifier.height(30.dp))
+                Button(onClick = { navController.navigate(Screen.PollScreen.route) }) {
+                    AppText(
+                        value = "Начать контроль",
+                        textSize = TextSize.MEDIUM,
+                        fontWeight = FWeight.REGULAR,
+                        color = black
+                    )
                 }
-                items(viewModel.currentModel.questions) {
-                    QuestionItem(model = it)
-                }
+            }
 
-                item {
-                    Button(onClick = { navController.navigate(Screen.PollScreen.route) }) {
-                        AppText(
-                            value = "Начать контроль",
-                            textSize = TextSize.MEDIUM,
-                            fontWeight = FWeight.REGULAR,
-                            color = black
-                        )
+            // Остальной контент
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.height(30.dp))
+                    }
+                    items(viewModel.currentModel.questions) {
+                        QuestionItem(model = it)
                     }
                 }
+            }
+        }
 
             }
         }
 
-
-    }
-
-}
 
 
 @Composable

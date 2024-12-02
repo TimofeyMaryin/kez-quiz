@@ -1,6 +1,7 @@
 package com.kez.quiz.presentation.vms
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -20,11 +21,13 @@ class KezViewModel(
 ): ViewModel() {
     private val firebase = FirebaseUtilsImpl(db)
 
+
     var currentModel by mutableStateOf<KezModel>(KezModel())
 
     var cards = mutableListOf<KezModel>()
     var isDoneLoad by mutableStateOf(false)
     var resultState by mutableStateOf(QuizButtonState.NONE)
+
 
 
     fun getCards() {
@@ -44,7 +47,9 @@ class KezViewModel(
     }
 
 
+
     init {
         getCards()
     }
 }
+

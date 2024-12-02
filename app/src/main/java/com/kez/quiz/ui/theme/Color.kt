@@ -18,7 +18,7 @@ val black = Color.Black
 val white = Color.White
 val gray = Color.Gray
 val green = Color(0xFF45FF00)
-val darkgray = Color(0xFFD35DFF)
+val darkgray = Color(0xFF81D5BF)
 val yellow = Color.Yellow
 
 @Composable fun red() = MaterialTheme.colorScheme.error
