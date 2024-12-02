@@ -4,7 +4,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -12,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
 import com.kez.quiz.R
 
 
@@ -62,6 +65,46 @@ fun AppText(
             TextSize.LARGE -> MaterialTheme.typography.displaySmall
             TextSize.EXTRA_SMALL -> MaterialTheme.typography.labelMedium
         },
+        fontWeight = when (fontWeight) {
+            FWeight.TINY -> FontWeight.Light
+            FWeight.REGULAR -> FontWeight.Normal
+            FWeight.BOLD -> FontWeight.Bold
+            FWeight.MEDIUM -> FontWeight.Medium
+        },
+        maxLines = maxLines,
+        overflow = TextOverflow.Ellipsis,
+        textDecoration = textDecoration,
+        fontStyle = fontStyle,
+        fontFamily = fontFamily
+    )
+}
+
+
+@Composable
+fun AppText(
+    modifier: Modifier = Modifier,
+    value: String,
+    textSize: TextSize,
+    fontWeight: FWeight,
+    color: Brush,
+    textAlign: TextAlign = TextAlign.Start,
+    maxLines: Int = Int.MAX_VALUE,
+    textDecoration: TextDecoration? = null,
+    fontStyle: FontStyle? = null,
+) {
+    Text(
+        text = value,
+        textAlign = textAlign,
+        modifier = modifier,
+        style = TextStyle(
+            brush = color,
+            fontSize = when (textSize) {
+                TextSize.SMALL -> 18.sp
+                TextSize.MEDIUM -> 24.sp
+                TextSize.LARGE -> 32.sp
+                TextSize.EXTRA_SMALL -> 48.sp
+            }
+        ),
         fontWeight = when (fontWeight) {
             FWeight.TINY -> FontWeight.Light
             FWeight.REGULAR -> FontWeight.Normal

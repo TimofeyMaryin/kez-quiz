@@ -2,11 +2,14 @@ package com.kez.quiz.presentation.fragments
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,9 +17,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +45,8 @@ import com.kez.quiz.presentation.ui.FWeight
 import com.kez.quiz.presentation.ui.TextSize
 import com.kez.quiz.presentation.vms.KezViewModel
 import com.kez.quiz.ui.theme.black
+import com.kez.quiz.ui.theme.cardContainerColor
+import com.kez.quiz.ui.theme.white
 
 
 /**
@@ -58,6 +66,7 @@ import com.kez.quiz.ui.theme.black
  * Composable функции это были бы 2 разные сущности (обьекта или класса), что привело бы к тому, что мы
  * бы постоянно теряли информацию из Firebase.
  */
+
 @Composable
 fun PreviewPollFragment(
     viewModel: KezViewModel,
@@ -106,21 +115,6 @@ fun PreviewPollFragment(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(30.dp),
-                contentAlignment = Alignment.TopCenter
-            ) {
-                Button(onClick = { navController.navigate(Screen.PollScreen.route) }) {
-                    AppText(
-                        value = "Начать контроль",
-                        textSize = TextSize.MEDIUM,
-                        fontWeight = FWeight.REGULAR,
-                        color = black
-                    )
-                }
-            }
 
             // Остальной контент
             Box(
@@ -140,12 +134,37 @@ fun PreviewPollFragment(
                     items(viewModel.currentModel.questions) {
                         QuestionItem(model = it)
                     }
+
+                    item {
+                        Spacer(modifier = Modifier.height(50.dp))
+                    }
                 }
             }
         }
 
+    }
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxSize(.9f), contentAlignment = Alignment.BottomEnd) {
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .border(5.dp, white, CircleShape)
+                    .size(80.dp)
+                    .background(cardContainerColor)
+                    .clickable { navController.navigate(Screen.PollScreen.route) },
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = white,
+                    modifier = Modifier.size(35.dp)
+                )
             }
         }
+    }
+}
 
 
 
@@ -165,7 +184,7 @@ private fun QuestionItem(
             )
             .fillMaxWidth(.9f)
             .height(100.dp)
-            .background(Color.White),
+            .background(cardContainerColor),
         contentAlignment = Alignment.Center
     ) {
 
@@ -173,8 +192,9 @@ private fun QuestionItem(
             value = model.question,
             textSize = TextSize.SMALL,
             fontWeight = FWeight.REGULAR,
-            color = black,
-            textAlign = TextAlign.Center
+            color = white,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(.9f)
         )
 
     }

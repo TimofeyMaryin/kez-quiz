@@ -3,6 +3,7 @@ package com.kez.quiz.presentation.fragments
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,9 +50,12 @@ fun FinishFragment(
     viewModel: KezViewModel,
     navController: NavController,
 ) {
-    BackHandler(enabled = true) {
+    BackHandler {
         viewModel.resultState = QuizButtonState.NONE
+        navController.navigate(Screen.MainScreen.route)
     }
+
+
     var bgcolor by remember { mutableStateOf(Color.Red) }
     LaunchedEffect(Unit) {
         if (viewModel.resultState == QuizButtonState.CORRECT) {
@@ -77,6 +81,9 @@ fun FinishFragment(
                     modifier = Modifier.size(200.dp)
                 )
             }
+
+
+
             AppText(
                 value = if (bgcolor == Color.Red) "ЧЕЛ..." else "ЛЕГЕНДА",
                 textSize = TextSize.LARGE,
@@ -85,21 +92,11 @@ fun FinishFragment(
             )
             Box(
                 modifier = Modifier
-                    .fillMaxSize() 
+                    .fillMaxSize()
                     .background(Color.Transparent)
+                    .clickable { navController.navigate(Screen.MainScreen.route) }
             ) {
-                Button(
-                    onClick = { navController.navigate(Screen.MainScreen.route) },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Transparent),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = Color.Transparent
-                    )
-                ) {
 
-                }
             }
         }
     }

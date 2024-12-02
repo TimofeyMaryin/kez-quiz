@@ -21,11 +21,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kez.quiz.data.KezModel
 import com.kez.quiz.ui.theme.black
+import com.kez.quiz.ui.theme.cardContainerColor
 import com.kez.quiz.ui.theme.containerColor
+import com.kez.quiz.ui.theme.white
 
 
 /**
@@ -45,7 +48,7 @@ fun CardItem(
                 .clip(RoundedCornerShape(35.dp))
                 .fillMaxWidth()
                 .height(150.dp)
-                .background(Color.White),
+                .background(cardContainerColor),
             contentAlignment = Alignment.Center
         ) {
 
@@ -63,9 +66,9 @@ fun CardItem(
                         value = model.theme,
                         textSize = TextSize.MEDIUM,
                         fontWeight = FWeight.BOLD,
-                        color = black
+                        color = white
                     )
-                    AppText(value = "${model.questions.size} вопросов", textSize = TextSize.SMALL, fontWeight = FWeight.REGULAR, color = black.copy(.6f))
+                    AppText(value = "${model.questions.size} вопросов", textSize = TextSize.SMALL, fontWeight = FWeight.REGULAR, color = white.copy(alpha = .6f))
                 }
 
 
@@ -73,14 +76,14 @@ fun CardItem(
                     Button(
                         onClick = { onClick() },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Cyan
+                            containerColor = Color.Black.copy(.6f)
                         )
                     ) {
                         AppText(
                             value = "Начать",
                             textSize = TextSize.MEDIUM,
                             fontWeight = FWeight.REGULAR,
-                            color = black
+                            color = white
                         )
                     }
                 }
@@ -104,7 +107,7 @@ fun HorizontalCardItem(
             .clip(MaterialTheme.shapes.large)
             .height(250.dp)
             .aspectRatio(.6f)
-            .background(Color.White)
+            .background(cardContainerColor)
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
@@ -112,7 +115,8 @@ fun HorizontalCardItem(
             value = model.theme,
             textSize = TextSize.MEDIUM,
             fontWeight = FWeight.BOLD,
-            color = black
+            color = black,
+            textAlign = TextAlign.Center
         )
     }
 

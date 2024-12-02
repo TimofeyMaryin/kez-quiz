@@ -10,11 +10,14 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -65,7 +68,7 @@ fun MainFragment(
 
     when (configuration.orientation) {
         Configuration.ORIENTATION_LANDSCAPE  -> {
-            HorizontalOrientationMainScreen(progress = progress, viewModel = viewModel)
+            HorizontalOrientationMainScreen(progress = progress, viewModel = viewModel, navController = navController)
         }
         else -> {
             VerticalOrientationMainScreen(
@@ -121,6 +124,7 @@ private fun VerticalOrientationMainScreen(
 
 @Composable
 private fun HorizontalOrientationMainScreen(
+    navController: NavController,
     progress: Float,
     viewModel: KezViewModel
 ) {
@@ -137,13 +141,14 @@ private fun HorizontalOrientationMainScreen(
         Box(modifier = Modifier.fillMaxSize(.9f), contentAlignment = Alignment.Center) {
 
             LazyRow(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxHeight().fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(viewModel.cards) {
                     HorizontalCardItem(model = it) {
-                        Toast.makeText(context, "Hello Herlya ${it.theme}", Toast.LENGTH_SHORT).show()
+                        viewModel.currentModel = it
+                        navController.navigate(Screen.PreviewPollScreen.route)
                     }
                 }
             }
