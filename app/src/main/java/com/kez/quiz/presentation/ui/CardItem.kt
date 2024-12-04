@@ -46,7 +46,7 @@ fun CardItem(
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(35.dp))
-                .fillMaxWidth()
+                .fillMaxWidth(.9f)
                 .height(150.dp)
                 .background(cardContainerColor),
             contentAlignment = Alignment.Center
@@ -73,18 +73,8 @@ fun CardItem(
 
 
                 Box(modifier = Modifier.fillMaxHeight(), contentAlignment = Alignment.BottomCenter) {
-                    Button(
-                        onClick = { onClick() },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Black.copy(.6f)
-                        )
-                    ) {
-                        AppText(
-                            value = "Начать",
-                            textSize = TextSize.MEDIUM,
-                            fontWeight = FWeight.REGULAR,
-                            color = white
-                        )
+                    SecondaryButton(value = "Начать") {
+                        onClick()
                     }
                 }
             }

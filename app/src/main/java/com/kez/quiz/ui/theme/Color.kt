@@ -21,7 +21,7 @@ val gray = Color.Gray
 val green = Color(0xFF45FF00)
 val darkgray = Color(0xFF81D5BF)
 val yellow = Color.Yellow
-
+val violet = Color(0xff876dff)
 val darkgrayBrush = Brush.linearGradient(
     listOf(
         Color(0xFF808080),

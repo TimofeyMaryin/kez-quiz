@@ -47,6 +47,7 @@ import com.kez.quiz.data.QuizButtonState
 import com.kez.quiz.presentation.navigation.Screen
 import com.kez.quiz.presentation.ui.AppText
 import com.kez.quiz.presentation.ui.FWeight
+import com.kez.quiz.presentation.ui.PrimaryBG
 import com.kez.quiz.presentation.ui.TextSize
 import com.kez.quiz.presentation.vms.KezViewModel
 import com.kez.quiz.ui.theme.black
@@ -95,11 +96,13 @@ fun PollFragment(
     }
 
 
+    PrimaryBG()
+
+
     // UI
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .background(white),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -118,13 +121,17 @@ fun PollFragment(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 IconButton(onClick = { navController.navigate(Screen.MainScreen.route) }) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null,
+                        tint = white
+                    )
                 }
                 AppText(
                     value = viewModel.currentModel.theme,
                     textSize = TextSize.MEDIUM,
                     fontWeight = FWeight.BOLD,
-                    color = black
+                    color = white
                 )
                 Spacer(modifier = Modifier.size(30.dp))
             }

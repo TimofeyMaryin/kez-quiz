@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -42,10 +44,13 @@ import com.kez.quiz.data.QuizModel
 import com.kez.quiz.presentation.navigation.Screen
 import com.kez.quiz.presentation.ui.AppText
 import com.kez.quiz.presentation.ui.FWeight
+import com.kez.quiz.presentation.ui.PrimaryBG
+import com.kez.quiz.presentation.ui.PrimaryFABIcon
 import com.kez.quiz.presentation.ui.TextSize
 import com.kez.quiz.presentation.vms.KezViewModel
 import com.kez.quiz.ui.theme.black
 import com.kez.quiz.ui.theme.cardContainerColor
+import com.kez.quiz.ui.theme.darkgrayBrush
 import com.kez.quiz.ui.theme.white
 
 
@@ -72,12 +77,8 @@ fun PreviewPollFragment(
     viewModel: KezViewModel,
     navController: NavController
 ) {
-    Image(
-        painter = painterResource(id = R.drawable.bg_bggenerator_com_qwerty),
-        contentDescription = null,
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.Crop
-    )
+    PrimaryBG()
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -131,6 +132,52 @@ fun PreviewPollFragment(
                     item {
                         Spacer(modifier = Modifier.height(30.dp))
                     }
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .clip(MaterialTheme.shapes.medium)
+                                .fillParentMaxWidth(.9f)
+                                .height(250.dp)
+                                .background(cardContainerColor),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.advertising_17844586),
+                                contentDescription = null,
+                                modifier = Modifier.height(139.dp),
+                                contentScale = ContentScale.FillHeight
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+                            AppText(
+                                value = viewModel.currentModel.theme,
+                                textSize = TextSize.MEDIUM,
+                                fontWeight = FWeight.BOLD,
+                                color = white
+                            )
+                        }
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    item {
+                        Box(
+                            modifier = Modifier.fillParentMaxWidth(.9f),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            AppText(
+                                value = "Вопросы",
+                                textSize = TextSize.MEDIUM,
+                                fontWeight = FWeight.BOLD,
+                                color = black
+                            )
+                        }
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
                     items(viewModel.currentModel.questions) {
                         QuestionItem(model = it)
                     }
@@ -145,22 +192,18 @@ fun PreviewPollFragment(
     }
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Box(modifier = Modifier.fillMaxSize(.9f), contentAlignment = Alignment.BottomEnd) {
-            Box(
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .border(5.dp, white, CircleShape)
-                    .size(80.dp)
-                    .background(cardContainerColor)
-                    .clickable { navController.navigate(Screen.PollScreen.route) },
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.PlayArrow,
-                    contentDescription = null,
-                    tint = white,
-                    modifier = Modifier.size(35.dp)
-                )
+        Row(
+            modifier = Modifier.fillMaxSize(.9f),
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            PrimaryFABIcon(icon = Icons.Default.ArrowBack, primaryBrush = darkgrayBrush) {
+                navController.popBackStack()
+            }
+
+
+            PrimaryFABIcon(icon = Icons.Default.ArrowForward, primaryBrush = cardContainerColor) {
+                navController.navigate(Screen.PollScreen.route)
             }
         }
     }
@@ -187,6 +230,9 @@ private fun QuestionItem(
             .background(cardContainerColor),
         contentAlignment = Alignment.Center
     ) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(black.copy(.4f)))
 
         AppText(
             value = model.question,
