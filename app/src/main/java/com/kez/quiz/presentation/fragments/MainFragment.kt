@@ -148,13 +148,13 @@ private fun VerticalOrientationMainScreen(
                                 verticalArrangement = Arrangement.Center
                             ) {
                                 AppText(
-                                    value = "Привет, Друг!",
+                                    value = "Здарова, Кент !",
                                     textSize = TextSize.SMALL,
                                     fontWeight = FWeight.BOLD,
                                     color = black
                                 )
                                 AppText(
-                                    value = "Давай улучшим твои знания!",
+                                    value = "Давай проверим твои знания!",
                                     textSize = TextSize.EXTRA_SMALL,
                                     fontWeight = FWeight.REGULAR,
                                     color = black
@@ -174,7 +174,7 @@ private fun VerticalOrientationMainScreen(
                             .fillParentMaxWidth(.9f)
                             .height(250.dp)
                             .background(cardContainerColor,),
-                        contentAlignment = Alignment.Center,
+                            contentAlignment = Alignment.BottomCenter,
                     ) {
                         Box(modifier = Modifier
                             .fillMaxSize()
@@ -185,13 +185,13 @@ private fun VerticalOrientationMainScreen(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Image(painter = painterResource(id = R.drawable.person_vector_3d_1), contentDescription = null, modifier = Modifier.height(150.dp), contentScale = ContentScale.FillHeight)
+                            Image(painter = painterResource(id = R.drawable.ryan), contentDescription = null, modifier = Modifier.height(130.dp) .width(120.dp),  contentScale = ContentScale.FillHeight)
 
                             Column(
                                 verticalArrangement = Arrangement.Center
                             ) {
                                 AppText(
-                                    value = "Я хочу, чтоб ты смог все пройти без ошибок, брат, Дон!",
+                                    value = "Случайная тема)) Если сам не можешь решиться))",
                                     textSize = TextSize.SMALL,
                                     fontWeight = FWeight.REGULAR,
                                     color = white

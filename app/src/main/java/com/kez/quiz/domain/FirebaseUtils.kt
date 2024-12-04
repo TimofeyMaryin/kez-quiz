@@ -35,7 +35,6 @@ class FirebaseUtilsImpl(private val db: FirebaseFirestore): FirebaseUtils {
                     val theme = cardDocument.getString("theme") ?: "error"
                     val quizList = mutableListOf<QuizModel>()
 
-                    // Получаем коллекцию questions для текущего документа card
                     cardDocument.reference.collection("questions")
                         .get()
                         .addOnSuccessListener { questionDocuments ->
@@ -52,14 +51,12 @@ class FirebaseUtilsImpl(private val db: FirebaseFirestore): FirebaseUtils {
                             }
 
 
-                            // После получения всех вопросов добавляем карточку
                             val card = KezModel(
                                 theme = theme,
                                 questions = quizList
                             )
                             cardList.add(card)
 
-                            // Вызываем callback после добавления всех карточек
                             if (cardList.size == cardDocuments.size()) {
                                 callback.onSuccess(models = cardList)
                             }

@@ -39,8 +39,6 @@ fun AppNavigation(viewModel: KezViewModel) {
 
     val navController = rememberNavController()
 
-    // NavHost функция сам по себе выступает в роли обертки для того, что у него в теле
-    // (ну если ты заглянишь в исходни нажав alt и тыкнув по этой функции ты прсто увидишь, что это тело - прсто параметр функции и называется он builder: NavGraphBuilder.() -> Unit
     NavHost(
         navController = navController,
         startDestination = Screen.MainScreen.route

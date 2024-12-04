@@ -117,7 +117,6 @@ fun PreviewPollFragment(
                 .fillMaxSize()
         ) {
 
-            // Остальной контент
             Box(
                 modifier = Modifier
                     .fillMaxSize()

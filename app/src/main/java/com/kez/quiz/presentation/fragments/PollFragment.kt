@@ -89,7 +89,7 @@ fun PollFragment(
         isCanShowAnswers = true
 
         for (i in pollModelAnswersStatus.indices) {
-            delay(500) // Задержка между появлением вопросов
+            delay(500)
             pollModelAnswersStatus[i] = true
         }
         pollModelQuestionStatus = true
@@ -99,7 +99,6 @@ fun PollFragment(
     PrimaryBG()
 
 
-    // UI
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -237,8 +236,6 @@ private fun PollButton(
 ) {
 
 
-
-    // Модифайры можешь изменять и баловаться!
     AnimatedVisibility(
         visible = isShow,
         enter = slideInHorizontally(tween(200)) { it } + fadeIn(tween(200)),
@@ -262,7 +259,6 @@ private fun PollButton(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                // С текстом можешь покрасоваться
                 AppText(
                     modifier = Modifier.fillMaxWidth(.9f),
                     value = value,
